@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista Festivala</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition>
+
+
+            <h:outputLabel   styleClass="labela" value="Lista svih festivala:"></h:outputLabel>
+            <h:form>
+                
+                <p:dataTable  id="festivali" var="fes" value="#{pretragaF.listaSvih}" editable="true"
+                              rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+
+                    <p:ajax event="rowEdit" listener="#{pretragaF.onRowEdit}" />
+                    <p:ajax event="rowEditCancel" listener="#{pretragaF.onRowCancel}" />
+
+                    <p:column headerText="Naziv" >
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.naziv}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.naziv}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Datum od">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:calendar id="vremeOd" value="#{fes.vremeOd}" pattern="yyyy-MM-dd" mode="popup"/></f:facet>
+                            <f:facet name="input"><p:calendar id="vremeOd1" value="#{fes.vremeOd}" pattern="yyyy-MM-dd" mode="popup"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Datum do">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:calendar id="vremeDo" value="#{fes.vremeDo}" pattern="yyyy-MM-dd" mode="popup"/></f:facet>
+                            <f:facet name="input"><p:calendar id="vremeDo1" value="#{fes.vremeDo}" pattern="yyyy-MM-dd" mode="popup"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Mesto">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.mesto}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.mesto}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Br Ulaznica">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.brUlaznica}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.brUlaznica}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Cena za dan">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.cenaZaDan}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.cenaZaDan}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Cena za paket">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.canaZaPaket}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.canaZaPaket}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Ocena">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.ocena}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.ocena}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Maksimalno Karata">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.maxKarata}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.maxKarata}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Maksimalno dnevno">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{fes.maxDnevno}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{fes.maxDnevno}"  /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Lista izvodjaca">
+                        <p:commandButton value="Otvori" action="#{admin.listaIzvodjaca(fes.naziv)}" ajax="false"/>
+                    </p:column>
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                    
+                </p:dataTable>
+                
+
+            </h:form>
+        </ui:composition> 
+    </h:body>
+</html>
+

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Prodaja Karata</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <p:growl id="messages" showDetail="true" />
+                <h:panelGrid columns="2">               
+                    <p:outputLabel value="Naziv festivala:"/>
+                    <p:inputText id="naziv" value="#{admin.nazivF}"/>
+                    <p:outputLabel value="Datum:"/>
+                    <p:calendar id="button1" value="#{admin.danFes}" pattern="yyyy-MM-dd" mode="popup" showOn="button" /> 
+                    <p:outputLabel value="Broj ulaznica:"/>
+                    <p:inputText id="brojulz" value="#{admin.brUlaz}"/>
+                    <p:outputLabel value="Paket:"/>
+                    <h:selectBooleanCheckbox value="#{admin.paket}" />
+                    <p:commandButton value="Prodaj" id="prodaja" action="#{admin.prodajaNer()}" styleClass="buttons" ajax="false"/> 
+
+                </h:panelGrid>
+
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

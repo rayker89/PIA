@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-Feb-2017 19:06:23 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bean.Festival" table="festival" catalog="pia" optimistic-lock="version">
+        <id name="naziv" type="string">
+            <column name="naziv" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="vremeOd" type="date">
+            <column name="vremeOd" length="10" not-null="true" />
+        </property>
+        <property name="vremeDo" type="date">
+            <column name="vremeDo" length="10" not-null="true" />
+        </property>
+        <property name="mesto" type="string">
+            <column name="mesto" length="15" not-null="true" />
+        </property>
+        <property name="brUlaznica" type="int">
+            <column name="brUlaznica" not-null="true" />
+        </property>
+        <property name="cenaZaDan" type="int">
+            <column name="cenaZaDan" not-null="true" />
+        </property>
+        <property name="canaZaPaket" type="int">
+            <column name="canaZaPaket" not-null="true" />
+        </property>
+        <property name="ocena" type="int">
+            <column name="ocena" not-null="true" />
+        </property>
+        <property name="maxKarata" type="int">
+            <column name="maxKarata" not-null="true" />
+        </property>
+        <property name="maxDnevno" type="int">
+            <column name="maxDnevno" not-null="true" />
+        </property>
+        <property name="poDanima" type="string">
+            <column name="poDanima" length="65535" not-null="true" />
+        </property>
+        <set name="galerijas" table="galerija" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival" length="30" not-null="true" />
+            </key>
+            <one-to-many class="bean.Galerija" />
+        </set>
+    </class>
+</hibernate-mapping>

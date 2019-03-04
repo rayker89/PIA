@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Detalji</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:outputLabel   styleClass="labela" value="Detalji:"></h:outputLabel>
+            <h:form>
+                <p:dataTable var="fes" value="#{korisnikKontrola.festival}">
+
+                    <p:column headerText="Naziv">
+                        <h:outputText value="#{fes.naziv}" />
+                    </p:column>
+
+                    <p:column headerText="Datum od">
+                        <h:outputText value="#{fes.vremeOd}" />
+                    </p:column>
+
+                    <p:column headerText="Datum do">
+                        <h:outputText value="#{fes.vremeDo}" />
+                    </p:column>
+
+                    <p:column headerText="Mesto">
+                        <h:outputText value="#{fes.mesto}" />
+                    </p:column>
+
+                    <p:column headerText="Cena za dan">
+                        <h:outputText value="#{fes.cenaZaDan}" />
+                    </p:column>
+
+                    <p:column headerText="Makisum karata">
+                        <h:outputText value="#{fes.maxKarata}" />
+                    </p:column>
+                </p:dataTable>
+                <h:outputLabel   styleClass="labela" value="Satnica izvodjaca:"></h:outputLabel>
+                <p:dataTable  id="izvodjaci" var="izv" value="#{korisnikKontrola.listaIzv}" 
+                              rows="10"
+                              paginator="true"
+                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                              rowsPerPageTemplate="5,10,15">
+
+                    <p:column headerText="Naziv izvodjaca" >
+
+                        <h:outputText value="#{izv.naziv}" />
+
+                    </p:column>
+
+                    <p:column headerText="Satnica do">
+
+                        <p:calendar id="vremeOd" value="#{izv.start}" pattern="yyyy-MM-dd HH:mm"  mode="popup"/>
+
+                    </p:column>
+
+                    <p:column headerText="Satnica do">
+
+                        <p:calendar id="vremeDo" value="#{izv.end}" pattern="yyyy-MM-dd HH:mm" mode="popup"/>
+
+                    </p:column>  
+                </p:dataTable>
+                <h:outputText value="Ocena:" />
+                <p:rating value="#{korisnikKontrola.festival.ocena}"  stars="10" />
+                <p:commandButton value="oceni" action="#{korisnikKontrola.rejting(korisnikKontrola.festival)}" styleClass="buttons" ajax="false"/>
+                <p:commandButton value="Nazad" action="#{korisnikKontrola.rezultatPretr()}" styleClass="buttons" ajax="false"/>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

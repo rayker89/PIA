@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista izvodjaca</title>
+    <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    
+    <h:body>
+        <ui:composition>
+
+
+            <h:outputLabel   styleClass="labela" value="Lista izvodjaca za izabrani festival:"></h:outputLabel>
+            <h:form>
+                
+                <p:dataTable  id="izvodjaci" var="izv" value="#{admin.listaIzv}" editable="true"
+                              rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+
+                    <p:ajax event="rowEdit" listener="#{admin.onRowEdit}" />
+                    <p:ajax event="rowEditCancel" listener="#{admin.onRowCancel}" />
+
+                    <p:column headerText="Festival" >
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{izv.festival}" /></f:facet>
+                            <f:facet name="input"><h:outputText value="#{izv.festival}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    
+                    <p:column headerText="Naziv izvodjaca" >
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{izv.naziv}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{izv.naziv}" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    
+                    <p:column headerText="Satnica do">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:calendar id="vremeOd" value="#{izv.start}" pattern="yyyy-MM-dd HH:mm"  mode="popup"/></f:facet>
+                            <f:facet name="input"><p:calendar id="vremeOd1" value="#{izv.start}" pattern="yyyy-MM-dd HH:mm" mode="popup"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Satnica do">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:calendar id="vremeDo" value="#{izv.end}" pattern="yyyy-MM-dd HH:mm" mode="popup"/></f:facet>
+                            <f:facet name="input"><p:calendar id="vremeDo1" value="#{izv.end}" pattern="yyyy-MM-dd HH:mm" mode="popup"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                    
+                </p:dataTable>
+                
+
+            </h:form>
+        </ui:composition> 
+        
+    </h:body>
+</html>
+

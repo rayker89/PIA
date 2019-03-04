@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pocetna</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+        <h:body style="background-image: url(./images/backBlack.jpg);" >
+
+            <div id="background" align="center">
+                <div id="header" >
+                    <ui:insert name="header">
+                        <ui:include src="headerFirs.xhtml"/>
+                    </ui:insert>
+                </div>
+                <div align="center">
+
+
+                    <h:form id="forma">
+
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                        <h:panelGrid columns="2">               
+                            <p:outputLabel value="Korisnicko ime:"/>
+                            <p:inputText id="username" value="#{logovanje.user}"/>
+                            <p:outputLabel value="Lozinka:"/>
+                            <p:password id="password" value="#{logovanje.pass}" />                                               
+                            <p:commandButton value="Uloguj se" id="logovanje" action="#{logovanje.ulogujSe}" update="forma" styleClass="buttons" ajax="false"/>
+                                 
+                            
+                                          
+                            <p:commandButton value="Registracija" action="#{logovanje.registracija()}" update="forma" styleClass="buttons" ajax="false">
+                            <p:resetInput target="forma" />
+                            </p:commandButton>               
+                            <p:commandLink value="Promena lozinke" action="#{logovanje.promenaLoz()}" styleClass="commands" ajax="false"/>  
+                            
+                        </h:panelGrid>
+                        
+                    </h:form>
+                </div>
+
+
+                <div id="footer" align="center">
+                    <ui:insert name="footer">
+                        <ui:include src="footer.xhtml"/>
+                    </ui:insert>
+                </div>
+
+
+            </div>
+
+
+
+
+        
+    </h:body>
+</html>
+

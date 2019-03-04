@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-Feb-2017 19:06:23 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bean.Komentari" table="komentari" catalog="pia" optimistic-lock="version">
+        <id name="festival" type="string">
+            <column name="festival" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="30" not-null="true" />
+        </property>
+        <property name="komentar" type="string">
+            <column name="komentar" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

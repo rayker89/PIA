@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+        
+    </h:head>
+    <h:body id="background" style="background-image: url(./images/backBlack.jpg);">
+    
+
+            <div id="header" align="center">
+                <ui:insert name="header">
+                    <ui:include src="header.xhtml"/>
+                </ui:insert>
+            </div>
+            <div>
+                <ui:insert name="menu">
+                    <ui:include src="meniAdmin.xhtml"/>
+                </ui:insert>    
+            </div>
+
+            <div id="kalendar">
+                <h:form >
+                    <p:calendar id="inline" value="#{pretragaF.datumOd}" mode="inline"/>
+                </h:form>
+            </div>
+
+            <div id="pretrage">
+                <p:growl id="messages" showDetail="true" />
+                <h:form rendered="#{admin.pocetnaAdmin}">
+                    <ui:insert name="top5">
+                        <ui:include src="adminTop5.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.registracije}">
+                <ui:insert name="zahtevi">
+                        <ui:include src="adminZahtevi.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.promeniPostojeci}">
+                <ui:insert name="lista">
+                    <ui:include src="adminListaFestivala.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.izvodjaci}">
+                <ui:insert name="lista1">
+                    <ui:include src="izvodjaciLista.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.dodajFestival}">
+                <ui:insert name="lista1">
+                    <ui:include src="adminDodajFestival.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.prodajNerezervisano}">
+                <ui:insert name="nerez">
+                    <ui:include src="adminNeregistrovani.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.otkazivanje}">
+                <ui:insert name="nerez">
+                    <ui:include src="adminOtkazivanje.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{admin.prodajRezervisano}">
+                <ui:insert name="nerez">
+                    <ui:include src="adminRegistrovani.xhtml"/>
+                    </ui:insert>
+                </h:form>
+            </div>
+
+
+            <div id="footer" align="center">
+                <ui:insert name="footer">
+                    <ui:include src="footer.xhtml"/>
+                </ui:insert>
+            </div>
+        
+    </h:body>
+</html>
+

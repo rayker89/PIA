@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Rezultat Pretrage</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body style="background-image: url(./images/backBlack.jpg);">
+    <div id="background" align="center">
+        <div id="header" >
+            <ui:insert name="header">
+                <ui:include src="header.xhtml"/>
+            </ui:insert>
+        </div>
+
+        <div align="center">
+            
+                <h:outputLabel   styleClass="labela" value="Lista festivala:"></h:outputLabel>
+                <h:form>
+                <p:dataTable var="fes" value="#{pretragaF.lista}"
+                             rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+
+                    <p:column headerText="Naziv">
+                        <h:outputText value="#{fes.naziv}" />
+                    </p:column>
+
+                    <p:column headerText="Datum od">
+                        <h:outputText value="#{fes.vremeOd}" />
+                    </p:column>
+                    
+                    <p:column headerText="Datum do">
+                        <h:outputText value="#{fes.vremeDo}" />
+                    </p:column>
+                    
+                    <p:column headerText="Mesto">
+                        <h:outputText value="#{fes.mesto}" />
+                    </p:column>
+
+                </p:dataTable>
+                    <p:commandButton value="Nazad" action="#{pretragaF.nazad()}" styleClass="buttons" ajax="false"/>
+                </h:form>
+        </div>
+
+
+        <div id="footer" align="center">
+            <ui:insert name="footer">
+                <ui:include src="footer.xhtml"/>
+            </ui:insert>
+        </div>
+
+
+    </div>
+</h:body>
+</html>
+

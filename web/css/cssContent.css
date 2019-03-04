@@ -1,0 +1,26 @@
+#omotac{
+   border: thin solid lightblue;
+   background: #D20005 ;
+   width: 790px;
+}
+#sidebarLeft {
+   border: thin solid lightblue;
+   padding: 5px;
+   position: absolute;
+   top: 0px;
+   right: 220px;
+   left: 0px;
+   bottom: 0;
+   background: #045491;
+}
+
+#workingSpace {
+   padding: 5px;
+   border: thin solid lightGray;
+   background: #fefeef;
+   position: absolute;
+   left: 220px;
+   right: 0px;
+   top: 0px;
+   bottom: 0px;
+}

@@ -1,0 +1,128 @@
+#header {
+    float:start;
+    padding:10px;
+    min-width:100%;
+    text-shadow: 1px 1px black;
+}
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: 3em;
+
+}
+
+#omotac {
+    float:left;
+    padding: 15px;
+    height: auto;
+    width: auto;
+
+}
+
+#kalendar{
+    float:left;
+    padding: 15px;
+    width: 20%;
+    
+}
+
+
+#pretrage{
+    float: right;
+    padding: 15px;
+    min-width: 50%;
+    max-width: 75%;
+
+}
+#background {
+    position: absolute;
+    min-height:80%;
+    max-width: 2000px;
+    width: 94%;
+    height: auto;
+    top: 0;
+    left: 0;
+    color: white;
+
+
+}
+body{
+    background-image:  url(./images/backBlack.jpg);
+    color: whitesmoke;
+
+}
+formular{
+    color: black;
+}
+
+.buttons {
+    color: black;
+    background: white;
+
+} 
+.commands {
+    color: white;
+
+
+}
+.labela{
+    color: white;
+    font-size: x-large;
+}
+
+.labela1{
+    color: white;
+    font-size: x-large;
+
+}
+
+.PRIHVACEN{
+    background-color : green;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:60px;
+    padding-left:60px;
+}
+
+.ODBIJEN{
+    background-color: red; 
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:60px;
+    padding-left:60px;
+}
+
+.PREDAT{
+    background-color: blue;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:60px;
+    padding-left:60px;
+
+}
+
+.VRACEN{
+    background-color: orange; 
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:60px;
+    padding-left:60px;
+}
+.DEFAULT{
+    background-color: white; 
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:60px;
+    padding-left:60px;
+}
+.nenad{
+    color: white;
+    text-shadow: 1px 1px black;
+}
+.nenad1{
+    color: black;
+    text-shadow: 1px 1px white;
+}
+

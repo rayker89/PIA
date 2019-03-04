@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registracija</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body style="background-image: url(./images/backBlack.jpg);" >
+        <div id="background">
+            <div id="header" align="center">
+                <ui:insert name="header">
+                    <ui:include src="header.xhtml"/>
+                </ui:insert>
+            </div>
+            <div align="center">
+                <h:form id="formRegistracija" enctype="multipart/form-data">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2" styleClass="nenad">
+                        <p:outputLabel value="Korisnicko ime:"/>
+                        <p:inputText id="username" value="#{registracija.username}" />
+                        <p:outputLabel value="Lozinka:"/>
+                        <p:password id="password" value="#{registracija.password}" match="password1" feedback="true"  />                                  
+                        <p:outputLabel value="Potvrda lozinke:"/>
+                        <p:password id="password1" value="#{registracija.password}" feedback="true" />
+                        <p:outputLabel value="Ime:"/>
+                        <p:inputText id="ime" value="#{registracija.ime}" />
+                        <p:outputLabel value="Prezime:"/>
+                        <p:inputText id="prezime" value="#{registracija.prezime}" />
+                        <p:outputLabel value="Kontakt telefon:"/>
+                        <p:inputText id="telefon" value="#{registracija.telefon}" />
+                        <p:outputLabel value="Elektronska pošta:"/>
+                        <p:inputText id="email" value="#{registracija.email}" />
+                                  
+                        <p:commandButton value="Registracija" id="registracija" action="#{registracija.registracija()}" update="formRegistracija" ajax="false"/>
+                       
+                        <p:commandButton value="Nazad" id="back" action="#{registracija.nazad()}" ajax="false"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+
+            <div id="footer" align="center">
+                <ui:insert name="footer">
+                    <ui:include src="footer.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>
+

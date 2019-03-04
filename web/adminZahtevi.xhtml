@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Zahtevi za registracijom</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition>
+            
+             <h:form enctype="multipart/form-data">
+             <h:outputLabel   styleClass="labela" value="Zahtevi za korisnicke naloge:"></h:outputLabel>       
+                    <p:dataTable var="reg" value="#{admin.listaReg}"
+                                 rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+
+                        <p:column headerText="Ime">
+                            <h:outputText value="#{reg.ime}" />
+                        </p:column>
+
+                        <p:column headerText="Prezime">
+                            <h:outputText value="#{reg.prezime}" />
+                        </p:column>
+
+                        <p:column headerText="Korisnicko ime">
+                            <h:outputText value="#{reg.korisnickoIme}" />
+                        </p:column>
+
+                        <p:column headerText="Lozinka">
+                            <h:outputText value="#{reg.lozinka}" />
+                        </p:column>
+
+                        <p:column headerText="Telefon">
+                            <h:outputText value="#{reg.telefon}" />
+                        </p:column>
+
+                        <p:column headerText="Email">
+                            <h:outputText value="#{reg.email}" />
+                        </p:column>
+                        <p:column headerText="Opcije">
+                            <p:commandButton value="Odobri" action="#{admin.odobri(reg, reg.ime, reg.prezime, reg.korisnickoIme, reg.lozinka, reg.telefon, reg.email)}" ajax="false"/>
+                            <p:commandButton value="Odbij"  action="#{admin.odbij(reg)}" ajax="false"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

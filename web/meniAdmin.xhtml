@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin meni</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <p:growl id="messages" showDetail="true" />
+                <p:menubar>
+                    <p:menuitem value="Admin" action="#{admin.pocetna()}" ajax="false"/>
+                    <p:submenu label="Dodavanje Festivala" icon="ui-icon-document">
+
+                        <p:menuitem value="Novi Festival" action="#{admin.dodavanjeFestivala()}" ajax="false" />
+                        <p:separator />
+                        <p:menuitem value="Log Out" action="#{admin.LogOut}" ajax="false"/>
+                    </p:submenu>
+
+                    <p:submenu label="Izmena podataka" icon="ui-icon-pencil">
+                        <p:menuitem value="Biranje festivala" action="#{admin.listaFes()}" ajax="false" />
+                    </p:submenu>
+
+                    <p:submenu label="Prodaja" icon="ui-icon-gear">
+                        <p:submenu label="Korisnici" >
+                            <p:menuitem value="Registrovani" action="#{admin.rezervisaneProdaja()}" ajax="false"/>
+                            <p:menuitem value="Neregistrovani" action="#{admin.nerezervisanoProdaja()}" ajax="false" />
+                        </p:submenu>
+                    </p:submenu>
+                    <p:menuitem value="Registracije"  action="#{admin.registracijeFunkcija()}" icon="ui-icon-pencil" ajax="false" />
+                    <p:menuitem value="Otkazivanje"  action="#{admin.otkazivanjeFes()}" icon="ui-icon-pencil" ajax="false" />
+                    <p:menuitem value="Logout" action="#{admin.LogOut}" icon="ui-icon-close" ajax="false" />
+                </p:menubar>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

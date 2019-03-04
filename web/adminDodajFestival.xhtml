@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form>
+
+                <p:growl id="growl" sticky="true" showDetail="true"/>
+
+                <p:wizard flowListener="#{admin.onFlowProcess}">
+                    <p:tab id="osnovni" title="Osnovni podaci">
+                        <p:panel header="Unos osnovnih podataka">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Naziv: " />
+                                <p:inputText value="#{admin.festival.naziv}"  label="Naziv"/>
+
+                                <h:outputText value="Vreme od: " />
+                                <p:calendar id="cal1" value="#{admin.festival.vremeOd}" pattern="yyyy-MM-dd" mode="popup"  label="Vreme od"/>
+
+                                <h:outputText value="Vreme do: " />
+                                <p:calendar id="cal2" value="#{admin.festival.vremeDo}" pattern="yyyy-MM-dd" mode="popup"  label="Vreme do"/>
+                                
+                                <h:outputText value="Mesto: " />
+                                <p:inputText value="#{admin.festival.mesto}"  label="Mesto"/>
+
+                                <h:outputText value="Broj ulaznica: " />
+                                <p:inputText value="#{admin.festival.brUlaznica}"  label="Broj ulaznica"/>
+
+                                <h:outputText value="Cena za dan: " />
+                                <p:inputText value="#{admin.festival.cenaZaDan}"  label="Cena za dan"/>
+
+                                <h:outputText value="Cena za paket: " />
+                                <p:inputText value="#{admin.festival.canaZaPaket}"  label="Cena za paket"/>
+
+                                <h:outputText value="Ocena: " />
+                                <p:inputText value="#{admin.festival.ocena}"  label="Ocena"/>
+
+                                <h:outputText value="Maksimalno dnevno karata: " />
+                                <p:inputText value="#{admin.festival.maxDnevno}"  label="Maksimalno dnevno"/>
+                                
+                                <h:outputText value="Maksimalno karata: " />
+                                <p:inputText value="#{admin.festival.maxKarata}"  label="Maksimalno karata"/>
+
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="izvodjaci" title="Izvodjaci">
+                        <p:panel header="Unosenje liste izvodjaca">
+                            <p:messages />
+                            <h:panelGrid  columnClasses="label, value">
+                                <h:outputText value="Naziv: " />
+                                <p:inputText value="#{admin.izvodjac.naziv}" />
+
+                                <h:outputText value="Start: " />
+                                <p:calendar value="#{admin.izvodjac.start}" pattern="yyyy-MM-dd HH:mm" mode="popup" />
+
+                                <h:outputText value="End: " />
+                                <p:calendar value="#{admin.izvodjac.end}" pattern="yyyy-MM-dd HH:mm" mode="popup" />
+
+                                <h:outputText value="Dodaj jos: " />
+                                <h:selectBooleanCheckbox value="#{admin.skip}" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="galerija" title="Galerija">
+                        <p:panel header="Dodavanje u galeriju">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Slika:" />
+                                <p:inputText></p:inputText>
+
+                               <h:outputText value="Video: " />
+                                <p:inputText></p:inputText>
+                            <h:selectBooleanCheckbox value="#{admin.skip}" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="confirm" title="Confirmation">
+                        <p:panel header="Potvrda">
+                              
+                            <p:commandButton value="Potvrda" actionListener="#{admin.save(admin.festival)}" update="growl" process="@this"/>
+                        </p:panel>
+                    </p:tab>
+                </p:wizard>
+
+            </h:form>
+
+        </ui:composition>
+    </h:body>
+</html>
+

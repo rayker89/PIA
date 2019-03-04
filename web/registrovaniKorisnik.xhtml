@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrovani korisnik</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+        
+    </h:head>
+    <h:body id="background" style="background-image: url(./images/backBlack.jpg);">
+    
+
+            <div id="header" align="center">
+                <ui:insert name="header">
+                    <ui:include src="header.xhtml"/>
+                </ui:insert>
+            </div>
+            <div>
+                <ui:insert name="menu">
+                    <ui:include src="meniRegistrovani.xhtml"/>
+                </ui:insert>    
+            </div>
+
+            <div id="kalendar">
+                <h:form >
+                    <p:calendar id="inline"  mode="inline" value="#{korisnikKontrola.kalendarDan}" onclick="#{korisnikKontrola.pretraziPoDanu(dan)}" />
+                </h:form >
+            </div>
+
+            <div id="pretrage">
+                <p:growl id="messages" showDetail="true" />
+                <h:form rendered="#{korisnikKontrola.pocetna}">
+                    <ui:insert name="top5">
+                        <ui:include src="registrovaniPocetna.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{korisnikKontrola.rezervisanje}">
+                    <ui:insert name="rezervisanje">
+                        <ui:include src="registrovaniRezervisanje.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{korisnikKontrola.rezultatPretrage}">
+                    <ui:insert name="rezervisanje">
+                        <ui:include src="registrovaniRezultatPretrage.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{korisnikKontrola.detalji}">
+                    <ui:insert name="rezervisanje">
+                        <ui:include src="registrovaniDetalji.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{korisnikKontrola.formaZaRez}">
+                    <ui:insert name="rezervisanje">
+                        <ui:include src="registrovaniFormaZaRez.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+                <h:form rendered="#{korisnikKontrola.mojeulaznice}">
+                    <ui:insert name="rezervisanje">
+                        <ui:include src="registrovaniMojeUlaznice.xhtml"/>
+                    </ui:insert>
+                </h:form>
+                
+            </div>
+
+
+            <div id="footer" align="center">
+                <ui:insert name="footer">
+                    <ui:include src="footer.xhtml"/>
+                </ui:insert>
+            </div>
+        
+    </h:body>
+</html>
+
